@@ -1,0 +1,1317 @@
+#local-fonts-uploader-app {
+    min-height: 120vh;
+}
+
+.localfu-no-fonts-container {
+    width: 100%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    color: gray;
+}
+
+.localfu-no-fonts-container > h2 {
+    color: gray;
+}
+
+.localfu-no-fonts-icon {
+    font-size: 60px;
+}
+
+.localfu-upload-font-container {
+    border: 1px solid black;
+    padding: 60px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lfu-variant-panel {
+    max-width: 60%;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* .lfu-variant-panel > input {
+  flex: 1 1 100%;
+  max-width: 100% !important;
+  width: 100% !important;
+} */
+.lfu-edit-font-name {
+    width: 60% !important;
+    max-width: 60% !important;
+    margin-bottom: 10px !important;
+}
+
+.lfu-add-new-variant {
+    width: 60% !important;
+    max-width: 60% !important;
+}
+
+.lfu-font-file-upload {
+    width: 100%;
+    display: flex;
+}
+
+.lfu-variant-panel .lfu-select,
+.lfu-variant-panel > button {
+    flex: 1 1 calc(50% - 10px);
+}
+
+.lfu-tagline-note {
+    color: gray;
+    margin: 0 0 25px;
+    font-style: italic;
+}
+
+.lfu-tagline-no-margin-bottom {
+    margin-bottom: 0 !important;
+}
+
+.localfu-inline-block {
+    display: inline-block;
+    border-bottom: 2px solid black;
+}
+
+.lfu-font-variants-title {
+    font-size: 19px;
+    display: flex;
+    gap: 10px;
+    font-weight: 400;
+}
+
+.localfu-assign-container,
+.localfu-data-assign-container {
+    width: 40%;
+}
+
+.localfu-setting-delete-btn {
+    width: 20%;
+}
+
+.lfu-btn-red:hover {
+    color: #f00;
+    border-color: #ffdede;
+    background: #ffdede;
+}
+
+.v-card-title {
+    font-weight: 600;
+    align-items: center;
+    letter-spacing: 0;
+    gap: 10px;
+}
+
+.lfu-popup-box .v-card-title {
+    line-height: 1;
+    color: var(--noti-color, currentColor);
+}
+
+#lfu-font-name-input {
+    border: 1px solid #ababab !important;
+    border-radius: 5px;
+    height: 50px;
+    width: 100%;
+    padding-left: 20px;
+    box-shadow: none !important;
+}
+
+#lfu-font-name-input:focus {
+    border-color: black !important;
+}
+
+#lfu-font-name-input::placeholder {
+    color: rgb(204, 204, 204);
+}
+
+.lfu-black-btn {
+    font-weight: 600;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #000;
+    gap: 5px;
+}
+
+.lfu-white-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000000;
+    height: 40px;
+    font-weight: 600;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #000;
+    border-radius: 3px;
+    background-color: transparent;
+    gap: 5px;
+}
+
+.is-assign-variant,
+.lfu-green {
+    --noti-color: #30a967;
+}
+
+.lfu-red {
+    --noti-color: #ff2338;
+}
+
+.lfu-class-name-input {
+    height: 40px;
+    width: 100%;
+}
+
+.lfu-class-name-input:focus {
+    border-color: rgb(0, 0, 0) !important;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.lfu-transition {
+    transition: all 0.3s ease;
+}
+
+.lfu-transition:disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.lfu-container {
+    width: 100%;
+    max-width: 1420px !important;
+    padding: 0 20px 0 20px !important;
+}
+
+.lfu-app {
+    background-color: #f0f0f1 !important;
+}
+
+textarea.lfu-text-area-sync-data {
+    font-family: monospace, monospace;
+    padding: 20px;
+}
+
+textarea.lfu-text-area-sync-data:read-only {
+    border-color: transparent;
+    color: #777;
+}
+
+.lfu-card {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: none !important;
+}
+
+.localfu-container {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+    padding: 60px 40px;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.lfu-card-center {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin-top: 10px;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.lfu-form-list-title {
+    display: inline-block;
+    font-size: 19.2px;
+    font-weight: 400;
+    border-bottom: 2px solid #1c2327;
+    margin: 0 0 30px 0;
+    padding: 0px;
+    color: #1c2327;
+}
+
+.lfu-vtab-title {
+    font-size: 18px;
+    letter-spacing: -0.03em;
+    text-transform: none;
+}
+
+.lfu-expansion-panel {
+    margin-top: 7px;
+    border-radius: 5px;
+}
+
+.lfu-setting-properties-title {
+    margin-top: 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.lfu-row-properties {
+    padding: 7px 16px 24px !important;
+}
+
+.v-tab__slider {
+    height: 5px !important;
+}
+
+.lfu-footer {
+    position: sticky;
+    z-index: 1000;
+    bottom: 0;
+    width: 100%;
+    margin-top: 32px;
+    padding: 10px 20px;
+    border-top: 2px solid #000;
+    border-radius: 0 0 5px 5px;
+    background-color: #fff;
+}
+
+.lfu-failed-snackbar .v-snackbar__wrapper {
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    color: #ff0000;
+    background-color: #ffdede;
+}
+
+.lfu-popup-box .v-card {
+    width: 100%;
+    border-left: 7px solid #8883;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+}
+
+.lfu-popup-box.is-assign-variant .v-card {
+    max-width: 600px;
+}
+
+.lfu-assign-help-text {
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #777;
+}
+
+textarea.lfu-assign-input {
+    margin: 0.5rem 1rem;
+    border: 1px solid #8882;
+    padding: 20px 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.is-assign-variant .v-card-text {
+    font-size: 18px !important;
+    color: #aaa;
+    line-height: 1.7 !important;
+}
+
+.lfu-popup-box .v-card-actions .v-btn__content {
+    font-size: 15px;
+    padding: 0 7px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+}
+
+.lfu-card-heading {
+    display: flex;
+    width: 100%;
+    margin: 0 0 25px 0;
+    padding: 0;
+}
+
+.lfu-card-heading i {
+    font-size: 1em;
+}
+
+.lfu-card-title {
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    color: #000;
+    border-bottom: 2px solid;
+    gap: 5px;
+}
+
+.lfu-card-title.no-border {
+    border-bottom: none;
+}
+
+.lfu-text-area:focus {
+    border: 1px solid #000 !important;
+    box-shadow: 0 0 0 0 #000 !important;
+}
+
+.lfu-text-area {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ababab;
+    border-radius: 5px;
+}
+
+.lfu-sync-data-btn-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.v-card-actions .lfu-access-btn {
+    background: #8881;
+}
+
+.lfu-ok-btn {
+    border: 1px solid #8882;
+    transition: all .1s;
+}
+
+.v-card-actions .lfu-cancel-btn {
+    background: #8881;
+}
+
+.lfu-access-btn:hover {
+    color: #000;
+    border-color: #68e58d;
+    background-color: #68e58d;
+}
+
+.lfu-snackbar .v-snackbar__content {
+    background: #000;
+    color: #fff;
+}
+
+.lfu-snackbar.is-error .v-snackbar__content {
+    background: #e70606;
+    color: #fff;
+}
+
+.lfu-ok-btn:hover,
+.lfu-white-btn:hover {
+    color: #fff;
+    border-color: #000;
+    background: #000;
+}
+
+.lfu-normal-btn:hover {
+    color: #fff;
+    background-color: #000;
+}
+
+.lfu-cancel-btn {
+    border-color: #8883;
+}
+
+.lfu-cancel-btn:hover {
+    background-color: #ff3530;
+    border-color: #ff3530;
+    color: #ffffff;
+}
+
+.lfu-file-btn {
+    font-size: 1rem;
+    padding: 0 40px;
+    min-height: 50px;
+}
+
+.lfu-snackbar .v-snackbar__wrapper {
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    color: #468847;
+    background-color: #dff0d8;
+}
+
+.lfu-v-tabs {
+    z-index: 10;
+    border-radius: 0 0 5px 5px;
+    background: #fff;
+    --v-tabs-height: 50px;
+}
+
+.lfu-v-tabs .v-btn__content {
+    font-size: 16px;
+    gap: 5px;
+}
+
+.lfu-introduce-right {
+    padding-left: 40px;
+}
+
+.lfu-introduce-right svg {
+    display: flex;
+    width: 100px;
+}
+
+.lfu-admin-title {
+    align-items: center;
+    display: flex;
+    font-size: 28px;
+    font-weight: 700;
+    gap: 7px;
+    letter-spacing: -.03em;
+    line-height: 1.1;
+    margin: 0 15px 0 0;
+}
+
+.lfu-admin-title svg {
+    width: 1em;
+}
+
+.lfu-tagline {
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 960px;
+}
+
+.lfu-docs-btn {
+    border-color: #8884;
+    line-height: 42px;
+}
+
+.lfu-grey-text {
+    color: grey !important;
+}
+
+.lfu-card-title-center {
+    font-size: 30px;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin: 0;
+    gap: 15px;
+}
+
+.lfu-create-form-wrap {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.flu-file-upload-icon {
+    font-size: 40px;
+    line-height: 1;
+    display: inline-flex;
+}
+
+.flu-file-upload-icon.mdi-file-hidden {
+    font-size: 50px;
+}
+
+.flu-file-holder {
+    display: flex;
+    min-height: 65px;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+
+.flu-file-url {
+    font-size: 11px;
+    font-style: italic;
+    color: #248d18;
+}
+
+.flu-file-upload {
+    max-width: 560px;
+    border: 3px dashed #8882;
+    border-radius: 7px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 10px;
+}
+
+.flu-file-upload h3 {
+    margin: 0;
+}
+
+.lfu-select-variant {
+    margin-top: 20px;
+}
+
+.lfu-description {
+    font-size: 16px;
+    color: #aaa;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+.lfu-variant-actions {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.lfu-big-input-wrap {
+    display: flex;
+    align-items: center;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 100%;
+}
+
+input.lfu-big-input {
+    font-size: 18px;
+    font-weight: 400;
+    width: 100%;
+    max-width: 700px;
+    padding: 10px 20px;
+    border: 1px solid #8884;
+    border-radius: 5px;
+}
+
+input.lfu-big-input:hover,
+input.lfu-big-input:focus {
+    border-color: #000;
+    box-shadow: none;
+}
+
+.lfu-creation-btn {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 350px;
+    padding: 5px 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    color: #000;
+    border: 1px solid #6ded84;
+    outline: none;
+    background: #6ded84;
+    box-shadow: none;
+    gap: 5px;
+}
+
+.lfu-big-btn {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 350px;
+    padding: 5px 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 1px solid;
+    outline: none;
+    background: #000;
+    box-shadow: none;
+    color: #fff;
+    gap: 5px;
+}
+
+.lfu-btn.is-cancel,
+.lfu-creation-btn.is-cancel {
+    color: #000;
+    border-color: #8884;
+    background: transparent;
+}
+
+.lfu-creation-btn i {
+    font-size: 1em;
+}
+
+.lfu-creation-btn:hover {
+    color: #fff;
+    border-color: #000;
+    background: #000;
+}
+
+.lfu-big-btn:hover {
+    color: #fff;
+    border-color: rgb(66, 185, 120);
+    background: rgb(66, 185, 120);
+}
+
+.lfu-font-url {
+    font-style: italic;
+    width: max-content;
+    max-width: 100%;
+    cursor: text;
+    overflow-wrap: break-word;
+    margin-bottom: 0;
+    padding: 4px 10px;
+    color: rgb(66, 185, 120);
+    border-radius: 3px;
+    background-color: rgba(66, 185, 120, 0.067);
+}
+
+.lfu-settings-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+}
+
+.lfu-settings-title i {
+    font-size: 1.25em;
+}
+
+.lfu-settings-list {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: 1px solid #8882;
+    border-radius: 5px;
+}
+
+.v-expansion-panel-title__overlay {
+    background: #42b978;
+}
+
+#lfu-footer-btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+#lfu-footer-btn button {
+    min-width: 150px;
+}
+
+.lfu-settings-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px 0px 40px;
+}
+
+.lfu-settings-row-details {
+    display: flex;
+    gap: 10px;
+    flex: 9 1 0;
+}
+
+.lfu-delete-setting-btn {
+    flex: 1 1 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.lfu-settings-row-details-1 {
+    flex: 1 1 0;
+}
+
+.lfu-settings-row-details-2 {
+    flex: 1 1 0;
+}
+
+.lfu-delete-setting-btn button {
+    max-width: 130px;
+}
+
+.lfu-tag-title-text {
+    display: flex;
+    gap: 10px;
+}
+
+.lfu-tag-title-text1 {
+    flex: 4 1 0;
+}
+
+.lfu-tag-title-text2 {
+    flex: 5 1 0;
+}
+
+.lfu-fullwidth-btn {
+    width: 100%;
+}
+
+.lfu-select .v-input {
+    --v-input-control-height: 40px;
+    --v-input-padding-top: 8px;
+}
+
+.v-list-item__overlay {
+    background: #42b978 !important;
+}
+
+/** dropdown */
+.v-list-item--density-default {
+    min-height: 40px;
+}
+
+.v-field__input {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: #000;
+}
+
+#lfu-class-name-warning-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 0px 17px;
+}
+
+#lfu-class-name-warning-container > p {
+    flex: 0 0 55%;
+}
+
+.localfu-variant-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.localfu-variant-content > :nth-child(1) {
+    flex: 2;
+}
+
+.localfu-variant-content > :nth-child(2) {
+    flex: 5;
+}
+
+.localfu-variant-content > :nth-child(3) {
+    flex: 5;
+}
+
+.localfu-variant-content > :nth-child(4) {
+    flex: 1;
+}
+
+.v-select .v-field .v-field__input > input {
+    border-color: transparent;
+}
+
+.lfu-btn {
+    white-space: nowrap;
+    border-radius: 5px;
+}
+
+.lfu-btn i {
+    line-height: 0;
+}
+
+.lfu-loading-icon {
+    animation: spin 1.5s infinite linear;
+}
+
+.lfu-tips {
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #0008afdd, #db00ff);
+}
+
+.lfu-tips h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    margin-top: 0;
+}
+
+.lfu-tips-description {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.lfu-icon-title {
+    display: flex;
+    gap: 10px;
+}
+
+.lfu-row-properties > .v-row {
+    display: flex;
+    gap: 10px;
+}
+
+.lfu-assign-row {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0px !important;
+}
+
+.lfu-divider {
+    margin-top: 15px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.75);
+}
+
+#lfu-title-card {
+    margin-bottom: -1px;
+    padding: 40px 40px 0;
+    border-radius: 5px 5px 0 0;
+    box-shadow: none !important;
+}
+
+#lfu-tab-title-card {
+    max-width: 1380px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#lfu-upload-font-card {
+    margin-top: 40px;
+}
+
+#lfu-font-name-warning-text {
+    color: red;
+    padding: 0px 0px 0px 4px;
+}
+
+#lfu-upload-font-row {
+    padding: 12px 0px 0px 0px;
+}
+
+#lfu-font-before-upload-name {
+    margin: 0px 20px 10px;
+    color: #42b978;
+    background-color: #42b97811;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+#lfu-support-type-text {
+    margin: 0px 20px;
+    font-style: italic;
+}
+
+#lfu-font-uploaded-name {
+    font-size: 17.6px;
+    margin: 0px !important;
+}
+
+#lfu-divider-font-uploaded {
+    margin: 20px 0px;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.75);
+}
+
+#lfu-expansion-tag {
+    margin-top: 40px;
+}
+
+.lfu-settings-desc {
+    color: #aaa;
+}
+
+.lfu-assign-font-btn-container {
+    padding: 20px 0px 0px !important;
+}
+
+#lfu-class-name-warning-text {
+    margin-top: 0px;
+    padding-left: 10px;
+    color: red;
+}
+
+.localfu-name {
+    font-size: 20px;
+    margin: 0;
+}
+
+.localfu-name i {
+    font-size: 22px;
+}
+
+.localfu-card,
+.localfu-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.localfu-list {
+    flex-flow: row wrap;
+    row-gap: 15px;
+}
+
+.lfu-listing {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+}
+
+.localfu-list:not(:first-child) {
+    border-top: 1px solid #8882;
+    padding-top: 15px;
+}
+
+.localfu-uploaded-font-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-flow: row nowrap;
+}
+
+.localfu-uploaded-font-btn-container > button {
+    min-width: 150px;
+    max-width: 40%;
+    height: 100%;
+}
+
+.localfu-setting-container {
+    max-width: 1380px;
+    margin-top: 18px;
+}
+
+.localfu-upload {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.localfu-variants {
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 20px;
+    padding: 40px 40px;
+}
+
+.localfu-setting {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.localfu-_font-preview {
+    width: 70%;
+}
+
+.localfu-variant-container {
+    width: 100%;
+    display: flex;
+}
+
+.localfu-variant-container > div {
+    width: 50%;
+}
+
+.localfu-setting-row-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.localfu-upload-font-btn-container {
+    display: flex;
+}
+
+.localfu-variant-amount-text {
+    color: #777;
+    margin-bottom: 0;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.localfu-assign-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.localfu-assign-textarea {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+.localfu-name-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 7px;
+}
+
+.v-chip-group.lfu-assigned-preview .v-chip {
+    --v-chip-height: 26px;
+}
+
+.lfu-assigned-preview .v-chip--disabled {
+    opacity: 1;
+}
+
+.lfu-assigned-preview .v-chip__content {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.localfu-file {
+    display: inline-flex;
+    font-size: 11px;
+    gap: 5px;
+}
+
+.lfu-assigned-preview .v-chip .v-chip__underlay {
+    background-color: #67bb72;
+}
+
+.localfu-variant-amount-text i,
+.localfu-file i {
+    color: #67bb72;
+}
+
+.doc-helper {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border: 1px solid #8882;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.doc-helper h3 {
+    margin: 0;
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.lfu-rec-cards {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+    max-width: 1000px
+}
+
+.lfu-rec-card {
+    border: 1px solid #8884;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden
+}
+
+.lfu-rec-content {
+    padding: 0 20px 30px
+}
+
+.lfu-rec-image {
+    background: #8881;
+    padding-bottom: 50.85%;
+    position: relative;
+    width: 100%
+}
+
+.lfu-rec-image img {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+
+.lfu-rec-card .lfu-black-btn {
+    margin-top: 10px;
+    text-decoration: none
+}
+
+.lfu-rec-content h2 {
+    font-size: 22px;
+    margin-bottom: 0
+}
+
+p.lfu-rec-tagline {
+    font-size: .8rem;
+    margin-top: 10px
+}
+
+@media (max-width: 1024px) {
+    .lfu-responsive-btn {
+        width: 150px;
+    }
+
+    #lfu-no-font-title {
+        line-height: 1.4;
+        font-weight: 700;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    #lfu-admin-title {
+        font-size: 24px;
+    }
+
+    .lfu-tagline {
+        font-size: 15px;
+    }
+
+    .lfu-responsive-btn {
+        width: 100%;
+    }
+
+    #lfu-no-font-title {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .lfu-introduce-right {
+        padding-left: 0;
+        padding-bottom: 15px;
+    }
+
+    .lfu-introduce-right svg {
+        width: 60px;
+    }
+
+    #lfu-title-card {
+        flex-flow: column-reverse nowrap;
+        padding: 20px 20px 0;
+    }
+
+    .lfu-card-center {
+        padding: 40px 20px;
+    }
+
+    .lfu-card-title-center {
+        font-size: 26px;
+        gap: 10px;
+    }
+
+    .lfu-creation-btn {
+        font-size: 18px;
+        line-height: 42px;
+        width: 100%;
+        min-width: auto;
+    }
+
+    #lfu-footer-btn {
+        justify-content: center;
+    }
+
+    #lfu-footer-btn button {
+        width: 100%;
+    }
+
+    .lfu-settings-row-details-1 {
+        width: 50%;
+    }
+
+    .lfu-settings-row-details-2 {
+        width: 50%;
+    }
+
+    .lfu-delete-setting-btn {
+        width: 100%;
+    }
+
+    .lfu-settings-row {
+        flex-direction: column;
+    }
+
+    .lfu-delete-setting-btn button {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .lfu-tag-title-text1 {
+        flex: 1 1 0;
+    }
+
+    .lfu-tag-title-text2 {
+        flex: 1 1 0;
+    }
+
+    #lfu-class-name-warning-container > p {
+        flex: 0 0 100%;
+    }
+
+    .localfu-assign-container,
+    .localfu-data-assign-container,
+    .localfu-setting-delete-btn {
+        width: 100%;
+    }
+
+    .lfu-edit-font-name {
+        width: 100% !important;
+    }
+
+    .localfu-variant-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .localfu-variant-content > *:nth-child(n) {
+        text-align: center;
+        flex: 1;
+        width: 100%;
+    }
+
+    .flu-file-upload {
+        padding: 20px;
+    }
+
+    .lfu-file-btn {
+        font-size: .9rem;
+        padding: 0 30px;
+        min-height: 42px;
+    }
+
+    .lfu-variant-actions {
+        flex-flow: column-reverse;
+        font-size: 1rem;
+        gap: 10px;
+    }
+
+    .lfu-rec-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
