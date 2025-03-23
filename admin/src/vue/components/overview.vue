@@ -12,10 +12,11 @@ const uploadedFonts = inject('uploadedFonts');
 const translate = inject('translate');
 const displayNewFontCreation = ref(false);
 const newFontName = ref(null);
+const selectedFont = inject('selectedFont');
 
 const snackbar = reactive({
 	show: false,
-	className: 'lfu-snackbar',
+	className: 'lfontsup-snackbar',
 	message: "",
 	icon: "mdi-message-reply-outline",
 });
@@ -33,7 +34,7 @@ const alertDialog = reactive({
 
 const confirmationDialog = reactive({
 	show: false,
-	className: 'lfu-popup-box',
+	className: 'lfontsup-popup-box',
 	icon: 'mdi-delete-empty-outline',
 	title: '',
 	message: '',
@@ -92,7 +93,7 @@ const addNewFont = async () => {
 		showAlertDialog({
 			title: translate.duplicateNameErrorTitle,
 			message: translate.duplicateNameErrorDesc,
-			className: 'lfu-red',
+			className: 'lfontsup-red',
 			icon: 'mdi-information-outline',
 		})
 		return;
@@ -101,11 +102,11 @@ const addNewFont = async () => {
 	try {
 		isRequestPending.value = true;
 		const formData = new FormData();
-		formData.append("action", "localfuCreateFont");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupCreateFont");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 		formData.append("data", JSON.stringify({name: newFontName.value}));
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -115,13 +116,13 @@ const addNewFont = async () => {
 			uploadedFonts.value = results.data
 			showSnackbar({
 				message: translate.addFontSuccessMessage.replace('%s', newFontName.value),
-				className: 'lfu-snackbar',
+				className: 'lfontsup-snackbar',
 			});
 		} else {
 			showAlertDialog({
 				title: translate.errorTitle,
 				message: results.data,
-				className: 'lfu-red',
+				className: 'lfontsup-red',
 				icon: 'mdi-information-outline',
 			})
 		}
@@ -143,7 +144,7 @@ const deleteFont = async (fontID, fontName) => {
 		showAlertDialog({
 			title: translate.errorTitle,
 			message: translate.errorDesc,
-			className: 'lfu-red',
+			className: 'lfontsup-red',
 			icon: 'mdi-information-outline',
 		})
 		return;
@@ -152,11 +153,11 @@ const deleteFont = async (fontID, fontName) => {
 	try {
 		isRequestPending.value = true;
 		const formData = new FormData();
-		formData.append("action", "localfuRemoveFont");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupRemoveFont");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 		formData.append("data", JSON.stringify({font_name: fontName}));
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -165,16 +166,21 @@ const deleteFont = async (fontID, fontName) => {
 		if (results.success) {
 			uploadedFonts.value = results.data;
 
-			showSnackbar({
+		// Unset selected font if it is deleted
+		if (fontName === selectedFont.value?.name) {
+			selectedFont.value = {}; // Use null
+		}
+		
+		showSnackbar({
 				message: translate.deleteFontSuccessMessage.replace('%s', fontName),
-				className: 'lfu-snackbar',
+				className: 'lfontsup-snackbar',
 			});
 
 		} else {
 			showAlertDialog({
 				title: translate.errorTitle,
 				message: results.data,
-				className: 'lfu-red',
+				className: 'lfontsup-red',
 				icon: 'mdi-information-outline',
 			})
 		}
@@ -233,7 +239,7 @@ const deleteFontTrigger = (fontID, fontName) => {
  * @param {number|string} fontID - The ID of the font to edit.
  */
 const editVariantsTrigger = (id, name) => {
-	setStorage('localfuSavedFont', {id, name});
+	setStorage('lfontsupSavedFont', {id, name});
 	emit('open-variants-tab', id, name); // Emit the event with fontID and name
 };
 
@@ -256,7 +262,7 @@ const cancelNewFontTrigger = () => {
 	</v-snackbar>
 	
 	<!-- Alert Dialog -->
-	<v-dialog v-model="alertDialog.show" :class="alertDialog.className" class="lfu-popup-box" persistent>
+	<v-dialog v-model="alertDialog.show" :class="alertDialog.className" class="lfontsup-popup-box" persistent>
 		<v-card>
 			<v-card-title>
 				<v-icon>{{ alertDialog.icon }}</v-icon>
@@ -264,13 +270,13 @@ const cancelNewFontTrigger = () => {
 			</v-card-title>
 			<v-card-text>{{ alertDialog.message }}</v-card-text>
 			<v-card-actions>
-				<v-btn class="lfu-ok-btn" @click="alertDialog.onOkClick">{{ translate.ok }}</v-btn>
+				<v-btn class="lfontsup-ok-btn" @click="alertDialog.onOkClick">{{ translate.ok }}</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-dialog>
 	
 	<!-- Confirmation Dialog -->
-	<v-dialog v-model="confirmationDialog.show" :class="confirmationDialog.className" class="lfu-popup-box" persistent>
+	<v-dialog v-model="confirmationDialog.show" :class="confirmationDialog.className" class="lfontsup-popup-box" persistent>
 		<v-card>
 			<v-card-title>
 				<v-icon>{{ confirmationDialog.icon }}</v-icon>
@@ -279,7 +285,7 @@ const cancelNewFontTrigger = () => {
 			<v-card-text>{{ confirmationDialog.message }}</v-card-text>
 			<v-card-actions>
 				<v-spacer></v-spacer>
-				<v-btn class="lfu-cancel-btn" @click="confirmationDialog.onConfirm">{{ translate.delete }}</v-btn>
+				<v-btn class="lfontsup-cancel-btn" @click="confirmationDialog.onConfirm">{{ translate.delete }}</v-btn>
 				<v-btn @click="confirmationDialog.onCancel">{{ translate.cancel }}</v-btn>
 			</v-card-actions>
 		</v-card>
@@ -288,26 +294,26 @@ const cancelNewFontTrigger = () => {
 	<!-- Font Creation Form -->
 	<v-row class="ma-0 pa-0">
 		<v-col class="ma-0 pa-0" cols="12">
-			<v-card class="lfu-card lfu-card-center" elevation="0">
-				<h2 class="lfu-card-title-center">
+			<v-card class="lfontsup-card lfontsup-card-center" elevation="0">
+				<h2 class="lfontsup-card-title-center">
 					<v-icon>mdi-format-font</v-icon>
 					{{ translate.createNewFont }}
 				</h2>
-				<p class="lfu-tagline">{{ translate.createNewFontDesc }}</p>
-				<div class="lfu-create-form-wrap">
-					<div v-if="displayNewFontCreation" class="lfu-big-input-wrap">
+				<p class="lfontsup-tagline">{{ translate.createNewFontDesc }}</p>
+				<div class="lfontsup-create-form-wrap">
+					<div v-if="displayNewFontCreation" class="lfontsup-big-input-wrap">
 						<input
 								v-model="newFontName"
 								:placeholder="translate.createFontPlaceHolder"
-								class="lfu-big-input"
+								class="lfontsup-big-input"
 								type="text"
 						/>
 					</div>
-					<button class="lfu-creation-btn lfu-btn lfu-transition lfu-access-btn" @click="addNewFontTrigger">
+					<button class="lfontsup-creation-btn lfontsup-btn lfontsup-transition lfontsup-access-btn" @click="addNewFontTrigger">
 						<v-icon>{{ displayNewFontCreation ? 'mdi-content-save' : 'mdi-plus' }}</v-icon>
 						{{ displayNewFontCreation ? translate.saveNewFont : translate.addNewFont }}
 					</button>
-					<button v-if="displayNewFontCreation" class="lfu-btn lfu-creation-btn is-cancel" @click="cancelNewFontTrigger">
+					<button v-if="displayNewFontCreation" class="lfontsup-btn lfontsup-creation-btn is-cancel" @click="cancelNewFontTrigger">
 						<v-icon>mdi-cancel</v-icon>
 						{{ translate.cancel }}
 					</button>
@@ -317,23 +323,23 @@ const cancelNewFontTrigger = () => {
 	</v-row>
 	
 	<!-- Uploaded Fonts List -->
-	<div v-if="uploadedFonts && uploadedFonts.length > 0" class="localfu-card">
-		<v-card class="lfu-card" elevation="0">
-			<div class="lfu-form-list-title">
-				<div class="lfu-icon-title">
+	<template v-if="uploadedFonts && uploadedFonts.length > 0">
+		<v-card class="lfontsup-card" elevation="0">
+			<div class="lfontsup-form-list-title">
+				<div class="lfontsup-icon-title">
 					<v-icon>mdi-format-list-bulleted</v-icon>
 					{{ translate.fontsListing }}
 				</div>
 			</div>
-			<div class="lfu-listing">
+			<div class="lfontsup-listing">
 				<template v-for="(font, index) in uploadedFonts" :key="index">
-					<div class="localfu-list">
-						<div class="localfu-name-container">
-							<h2 class="localfu-name">
+					<div class="lfontsup-list">
+						<div class="lfontsup-name-container">
+							<h2 class="lfontsup-name">
 								<v-icon>mdi-credit-card-chip-outline</v-icon>
 								{{ font.name }}
 							</h2>
-							<span class="localfu-variant-amount-text"><v-icon>mdi-file-tree-outline</v-icon>
+							<span class="lfontsup-variant-amount-text"><v-icon>mdi-file-tree-outline</v-icon>
 								{{
 									font?.amount > 0
 											? `${font.amount} ${font.amount === 1 ? 'variant' : 'variants'}`
@@ -341,10 +347,10 @@ const cancelNewFontTrigger = () => {
 								}}
 					</span>
 						</div>
-						<div class="localfu-uploaded-font-btn-container">
+						<div class="lfontsup-uploaded-font-btn-container">
 							<button
 									:disabled="isRequestPending"
-									class="lfu-black-btn lfu-transition lfu-access-btn"
+									class="lfontsup-black-btn lfontsup-transition lfontsup-access-btn"
 									@click="editVariantsTrigger(font.id, font.name)"
 							>
 								<v-icon>mdi-cards-outline</v-icon>
@@ -352,7 +358,7 @@ const cancelNewFontTrigger = () => {
 							</button>
 							<button
 									:disabled="isRequestPending"
-									class="lfu-btn-red lfu-white-btn lfu-transition lfu-cancel-btn"
+									class="lfontsup-btn-red lfontsup-white-btn lfontsup-transition lfontsup-cancel-btn"
 									@click="deleteFontTrigger(font.id, font.name)"
 							>
 								<v-icon>mdi-delete-outline</v-icon>
@@ -363,5 +369,5 @@ const cancelNewFontTrigger = () => {
 				</template>
 			</div>
 		</v-card>
-	</div>
+	</template>
 </template>

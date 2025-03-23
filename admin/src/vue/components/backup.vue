@@ -11,7 +11,7 @@ const tab = inject('tab');
 
 const snackbar = reactive({
 	show: false,
-	className: 'lfu-snackbar',
+	className: 'lfontsup-snackbar',
 	message: "",
 	icon: "mdi-message-reply-outline",
 });
@@ -72,10 +72,10 @@ const fetchBackupData = async () => {
 
 	try {
 		const formData = new FormData();
-		formData.append("action", "lfuFetchBackup");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupFetchBackup");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -111,7 +111,7 @@ const handleRestoreData = async () => {
 		showSnackbar({
 			icon: 'mdi-alert-circle-outline',
 			message: translate.emptyRestoreData,
-			className: 'lfu-snackbar is-error',
+			className: 'lfontsup-snackbar is-error',
 		});
 		return;
 	}
@@ -122,7 +122,7 @@ const handleRestoreData = async () => {
 		showSnackbar({
 			icon: "mdi-alert-circle-outline",
 			message: translate.invalidRestoreData,
-			className: "lfu-snackbar is-error",
+			className: "lfontsup-snackbar is-error",
 		});
 		isRequestPending.value = false;
 		return;
@@ -134,11 +134,11 @@ const handleRestoreData = async () => {
 
 	try {
 		const formData = new FormData();
-		formData.append("action", "lfuRestoreData");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupRestoreData");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 		formData.append("data", jsonContent);
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -172,14 +172,14 @@ const copyDataTrigger = () => {
 			showSnackbar({
 				icon: 'mdi-content-copy',
 				message: translate.copySuccessMessage,
-				className: 'lfu-snackbar',
+				className: 'lfontsup-snackbar',
 			});
 		})
 		.catch(() => {
 			showSnackbar({
 				icon: 'mdi-alert-circle-outline',
 				message: translate.copyErrorMessage,
-				className: 'lfu-snackbar is-error',
+				className: 'lfontsup-snackbar is-error',
 			});
 		});
 };
@@ -194,14 +194,14 @@ const pasteContentTrigger = async () => {
 		showSnackbar({
 			icon: 'mdi-alert-circle-outline',
 			message: translate.pasteEmptyMessage,
-			className: 'lfu-snackbar is-error',
+			className: 'lfontsup-snackbar is-error',
 		});
 		return;
 	}
 	restoreContent.value = text;
 	showSnackbar({
 		message: translate.pasteSuccessMessage,
-		className: 'lfu-snackbar',
+		className: 'lfontsup-snackbar',
 	});
 };
 
@@ -229,7 +229,7 @@ const restoreDataTrigger = () => {
 	</v-snackbar>
 	
 	<!-- Alert Dialog -->
-	<v-dialog v-model="alertDialog.show" :class="alertDialog.className" class="lfu-popup-box" persistent>
+	<v-dialog v-model="alertDialog.show" :class="alertDialog.className" class="lfontsup-popup-box" persistent>
 		<v-card>
 			<v-card-title>
 				<v-icon>{{ alertDialog.icon }}</v-icon>
@@ -237,27 +237,27 @@ const restoreDataTrigger = () => {
 			</v-card-title>
 			<v-card-text>{{ alertDialog.message }}</v-card-text>
 			<v-card-actions>
-				<v-btn class="lfu-ok-btn" @click="alertDialog.onOkClick">{{ translate.ok }}</v-btn>
+				<v-btn class="lfontsup-ok-btn" @click="alertDialog.onOkClick">{{ translate.ok }}</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-dialog>
 	
 	<v-row>
 		<v-col>
-			<v-card class="lfu-card" elevation="0">
-				<div class="lfu-card-heading">
-					<div class="lfu-card-title no-border">
+			<v-card class="lfontsup-card" elevation="0">
+				<div class="lfontsup-card-heading">
+					<div class="lfontsup-card-title no-border">
 						<v-icon>mdi-import</v-icon>
 						{{ translate.importSettings }}
 					</div>
 				</div>
-				<textarea v-model="restoreContent" :placeholder="translate.restorePlaceHolder" class="lfu-text-area lfu-text-area lfu-text-area-sync-data" rows="5"></textarea>
-				<div class="lfu-sync-data-btn-group">
-					<button class="lfu-btn lfu-white-btn lfu-transition" @click="pasteContentTrigger">
+				<textarea v-model="restoreContent" :placeholder="translate.restorePlaceHolder" class="lfontsup-text-area lfontsup-text-area lfontsup-text-area-sync-data" rows="5"></textarea>
+				<div class="lfontsup-sync-data-btn-group">
+					<button class="lfontsup-btn lfontsup-white-btn lfontsup-transition" @click="pasteContentTrigger">
 						<v-icon>mdi-content-paste</v-icon>
 						{{ translate.paste }}
 					</button>
-					<button :disabled="isRequestPending" class="lfu-btn lfu-transition lfu-black-btn lfu-access-btn" @click="restoreDataTrigger">
+					<button :disabled="isRequestPending" class="lfontsup-btn lfontsup-transition lfontsup-black-btn lfontsup-access-btn" @click="restoreDataTrigger">
 						<v-icon>mdi-content-save-move-outline</v-icon>
 						{{ translate.import }}
 					</button>
@@ -267,16 +267,16 @@ const restoreDataTrigger = () => {
 	</v-row>
 	<v-row>
 		<v-col>
-			<v-card class="lfu-card" elevation="0">
-				<div class="lfu-card-heading">
-					<div class="lfu-card-title no-border">
+			<v-card class="lfontsup-card" elevation="0">
+				<div class="lfontsup-card-heading">
+					<div class="lfontsup-card-title no-border">
 						<v-icon>mdi-export</v-icon>
 						{{ translate.exportSettings }}
 					</div>
 				</div>
-				<textarea v-model="backupContent" :placeholder="translate.fetchBackupPlaceHolder" class="lfu-text-area lfu-text-area-sync-data" readonly rows="10"></textarea>
-				<div class="lfu-sync-data-btn-group">
-					<button :disabled="isRequestPending" class="lfu-white-btn lfu-transition" @click="copyDataTrigger">
+				<textarea v-model="backupContent" :placeholder="translate.fetchBackupPlaceHolder" class="lfontsup-text-area lfontsup-text-area-sync-data" readonly rows="10"></textarea>
+				<div class="lfontsup-sync-data-btn-group">
+					<button :disabled="isRequestPending" class="lfontsup-white-btn lfontsup-transition" @click="copyDataTrigger">
 						<v-icon>mdi-content-copy</v-icon>
 						{{ translate.copy }}
 					</button>

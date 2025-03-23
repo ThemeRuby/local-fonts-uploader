@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: local-fonts-uploader\n"
-"POT-Creation-Date: 2025-03-10 12:00+0700\n"
+"POT-Creation-Date: 2025-03-23 09:49+0700\n"
 "PO-Revision-Date: 2017-07-16 09:08+0700\n"
 "Last-Translator: \n"
 "Language-Team: ThemeRuby <support@themeruby.com>\n"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: .git\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: admin/admin-menu.php:73 admin/admin-menu.php:74 admin/admin-menu.php:82 admin/admin-menu.php:83 admin/admin-menu.php:174
+#: admin/admin-menu.php:71 admin/admin-menu.php:72 admin/admin-menu.php:80 admin/admin-menu.php:81 admin/admin-menu.php:172
 #: admin/description-strings.php:16
 msgid "Local Fonts Uploader"
 msgstr ""
 
-#: admin/admin-menu.php:106
+#: admin/admin-menu.php:104
 msgid "Settings"
 msgstr ""
 
@@ -254,218 +254,222 @@ msgid "Choose a variant..."
 msgstr ""
 
 #: admin/description-strings.php:54
-msgid "Upload File"
+msgid "Replace File"
 msgstr ""
 
 #: admin/description-strings.php:55
-msgid "Invalid File Type."
+msgid "Upload File"
 msgstr ""
 
 #: admin/description-strings.php:56
-msgid "Only .ttf, .otf, .woff, .woff2, .eot files are allowed."
+msgid "Invalid File Type."
 msgstr ""
 
 #: admin/description-strings.php:57
-msgid "For maximum compatibility, please upload font files in the following formats: TTF, OTF, WOFF, and WOFF2."
+msgid "Only .ttf, .otf, .woff, .woff2, .eot files are allowed."
 msgstr ""
 
 #: admin/description-strings.php:58
-msgid "Select or Upload Font"
+msgid "For maximum compatibility, please upload font files in the following formats: TTF, OTF, WOFF, and WOFF2."
 msgstr ""
 
 #: admin/description-strings.php:59
-msgid "Use This File"
+msgid "Select or Upload Font"
 msgstr ""
 
 #: admin/description-strings.php:60
-msgid "Font ID Missing"
+msgid "Use This File"
 msgstr ""
 
 #: admin/description-strings.php:61
-msgid "An issue occurred in the panel. Please switch to the overview tab and select a font before uploading variants."
+msgid "Font ID Missing"
 msgstr ""
 
 #: admin/description-strings.php:62
-msgid "Variant Missing"
+msgid "An issue occurred in the panel. Please switch to the overview tab and select a font before uploading variants."
 msgstr ""
 
 #: admin/description-strings.php:63
-msgid "Please set a variant for this file before submitting."
+msgid "Variant Missing"
 msgstr ""
 
 #: admin/description-strings.php:64
-msgid "Font File Missing"
+msgid "Please set a variant for this file before submitting."
 msgstr ""
 
 #: admin/description-strings.php:65
-msgid "Please upload a font file before submitting."
+msgid "Font File Missing"
 msgstr ""
 
 #: admin/description-strings.php:66
-msgid "Select a Variant"
+msgid "Please upload a font file before submitting."
 msgstr ""
 
 #: admin/description-strings.php:67
-msgid "Save Changes"
+msgid "Select a Variant"
 msgstr ""
 
 #: admin/description-strings.php:68
-msgid "Congratulations. Variants Uploaded Successfully"
+msgid "Save Changes"
 msgstr ""
 
 #: admin/description-strings.php:69
-msgid "CongYour font variants have been uploaded successfully. They are now ready for use."
+msgid "Congratulations. Variants Uploaded Successfully"
 msgstr ""
 
 #: admin/description-strings.php:70
-msgid "OK"
+msgid "CongYour font variants have been uploaded successfully. They are now ready for use."
 msgstr ""
 
 #: admin/description-strings.php:71
-msgid "Backup and Restore"
+msgid "OK"
 msgstr ""
 
 #: admin/description-strings.php:72
-msgid "CSS Selectors"
+msgid "Backup and Restore"
 msgstr ""
 
 #: admin/description-strings.php:73
-msgid "Assign Variant to CSS Selectors"
+msgid "CSS Selectors"
 msgstr ""
 
 #: admin/description-strings.php:74
-msgid "No CSS selectors yet..."
+msgid "Assign Variant to CSS Selectors"
 msgstr ""
 
 #: admin/description-strings.php:75
-msgid "Please add classnames before submitting."
+msgid "No CSS selectors yet..."
 msgstr ""
 
 #: admin/description-strings.php:76
-msgid "Variant assigned successfully."
+msgid "Please add classnames before submitting."
 msgstr ""
 
 #: admin/description-strings.php:77
-msgid "Variant cleared successfully."
+msgid "Variant assigned successfully."
 msgstr ""
 
 #: admin/description-strings.php:78
-msgid "Enter CSS selectors to assign this variant to, separated by commas (e.g., .class-1, .class-2)."
+msgid "Variant cleared successfully."
 msgstr ""
 
 #: admin/description-strings.php:79
-msgid "Export Settings"
+msgid "Enter CSS selectors to assign this variant to, separated by commas (e.g., .class-1, .class-2)."
 msgstr ""
 
 #: admin/description-strings.php:80
-msgid "Import Settings"
+msgid "Export Settings"
 msgstr ""
 
 #: admin/description-strings.php:81
-msgid "Copy"
+msgid "Import Settings"
 msgstr ""
 
 #: admin/description-strings.php:82
-msgid "Import Data"
+msgid "Copy"
 msgstr ""
 
 #: admin/description-strings.php:83
-msgid "Paste From Clipboard"
+msgid "Import Data"
 msgstr ""
 
 #: admin/description-strings.php:84
-msgid "Copied to clipboard successfully."
+msgid "Paste From Clipboard"
 msgstr ""
 
 #: admin/description-strings.php:85
-msgid "Failed to copy. Please try again"
+msgid "Copied to clipboard successfully."
 msgstr ""
 
 #: admin/description-strings.php:86
-msgid "Paste your backup data here..."
+msgid "Failed to copy. Please try again"
 msgstr ""
 
 #: admin/description-strings.php:87
-msgid "Fetching backup data..."
+msgid "Paste your backup data here..."
 msgstr ""
 
 #: admin/description-strings.php:88
-msgid "No data to copy."
+msgid "Fetching backup data..."
 msgstr ""
 
 #: admin/description-strings.php:89
-msgid "Pasted successfully."
+msgid "No data to copy."
 msgstr ""
 
 #: admin/description-strings.php:90
-msgid "No data to paste."
+msgid "Pasted successfully."
 msgstr ""
 
 #: admin/description-strings.php:91
-msgid "Empty restore content."
+msgid "No data to paste."
 msgstr ""
 
 #: admin/description-strings.php:92
-msgid "Invalid restore data format."
+msgid "Empty restore content."
 msgstr ""
 
 #: admin/description-strings.php:93
-msgid "Data restored successfully."
+msgid "Invalid restore data format."
 msgstr ""
 
 #: admin/description-strings.php:94
-msgid "AJAX request failed"
+msgid "Data restored successfully."
 msgstr ""
 
 #: admin/description-strings.php:95
-msgid "Restore Complete"
+msgid "AJAX request failed"
 msgstr ""
 
 #: admin/description-strings.php:96
-msgid "The data has been restored successfully."
+msgid "Restore Complete"
 msgstr ""
 
 #: admin/description-strings.php:97
-msgid "Helps"
+msgid "The data has been restored successfully."
 msgstr ""
 
 #: admin/description-strings.php:98
-msgid "Useful Tips"
+msgid "Helps"
 msgstr ""
 
 #: admin/description-strings.php:99
+msgid "Useful Tips"
+msgstr ""
+
+#: admin/description-strings.php:100
 msgid ""
 "If you are using our Themes, simply go to Typography panels, then assign your uploaded font to any elements you wish."
 msgstr ""
 
-#: admin/description-strings.php:100
+#: admin/description-strings.php:101
 msgid "Documentation"
 msgstr ""
 
-#: admin/description-strings.php:101
+#: admin/description-strings.php:102
 msgid "Full Documentation"
 msgstr ""
 
-#: admin/description-strings.php:102
+#: admin/description-strings.php:103
 msgid "Premium News/Magazine Themes"
 msgstr ""
 
-#: admin/description-strings.php:103
+#: admin/description-strings.php:104
 msgid "Foxiz"
 msgstr ""
 
-#: admin/description-strings.php:104
+#: admin/description-strings.php:105
 msgid "Newspaper News and Magazine WordPress Theme"
 msgstr ""
 
-#: admin/description-strings.php:105
+#: admin/description-strings.php:106
 msgid "Pixwell"
 msgstr ""
 
-#: admin/description-strings.php:106
+#: admin/description-strings.php:107
 msgid "Magazine WordPress Theme"
 msgstr ""
 
-#: admin/description-strings.php:107
+#: admin/description-strings.php:108
 msgid "Learn More"
 msgstr ""

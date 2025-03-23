@@ -2,7 +2,7 @@
 /**
  *
  * Plugin Name:       Local Fonts Uploader
- * Description:       Easily upload premium fonts and host them locally. Avoid external requests to enhance security, privacy, speed, and GDPR compliance.
+ * Description:       Easily upload and host fonts locally. Avoid external requests to enhance security, privacy, speed, and GDPR compliance.
  * Plugin URI:        https://themeruby.com/
  * Author:            ThemeRuby
  * Tags:              custom fonts, google fonts, local fonts, upload fonts, GDPR compliant
@@ -101,12 +101,18 @@ if ( ! class_exists( 'Local_Fonts_Uploader', false ) ) {
 		}
 
 		/**
-		 * Handles plugin deactivation, such as cleaning up options.
+		 * Handles plugin deactivation by performing necessary cleanup tasks.
+		 *
+		 * This includes removing stored options, such as clearing the CSS cache.
 		 *
 		 * @return void
 		 */
 		public function deactivation() {
+
+			// Remove stored CSS cache option
+			delete_option( 'local_fonts_uploader_css' );
 		}
+
 
 		/**
 		 * Loads the necessary plugin files based on the context (admin or frontend).

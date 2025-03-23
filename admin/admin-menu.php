@@ -32,27 +32,25 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Admin_Menu', false ) ) {
 		 */
 		public function admin_enqueue() {
 
-			wp_register_style( 'localfu-vendor-style', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/vendor.min.css', [], LOCAL_FONTS_UPLOADER_VERSION );
-			wp_register_style( 'localfu-style', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/main.min.css', [ 'localfu-vendor-style' ], LOCAL_FONTS_UPLOADER_VERSION );
-			wp_register_script( 'localfu-vendor', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/vendor.bundle.js', [], LOCAL_FONTS_UPLOADER_VERSION, true );
-			wp_register_script( 'localfu-admin', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/main.bundle.js', [ 'localfu-vendor' ], LOCAL_FONTS_UPLOADER_VERSION, true );
+			wp_register_style( 'lfontsup-vendor-style', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/vendor.min.css', [], LOCAL_FONTS_UPLOADER_VERSION );
+			wp_register_style( 'lfontsup-style', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/main.min.css', [ 'lfontsup-vendor-style' ], LOCAL_FONTS_UPLOADER_VERSION );
+			wp_register_script( 'lfontsup-vendor', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/vendor.bundle.js', [], LOCAL_FONTS_UPLOADER_VERSION, true );
+			wp_register_script( 'lfontsup-admin', LOCAL_FONTS_UPLOADER_URL . 'admin/assets/main.bundle.js', [ 'lfontsup-vendor' ], LOCAL_FONTS_UPLOADER_VERSION, true );
 
-			wp_localize_script( 'localfu-admin', 'localfuAdminConfig',
+			wp_localize_script( 'lfontsup-admin', 'lfontsupAdminConfig',
 				[
-					'ajaxUrl'              => admin_url( 'admin-ajax.php' ),
-					'nonce'                => wp_create_nonce( 'local-fonts-uploader' ),
-					'translate'            => local_font_uploader_strings(),
-					'foxizCoreDefined'     => defined( 'FOXIZ_CORE_VERSION' ),
-					'foxizFontSettingsUrl' => admin_url( 'admin.php?page=ruby-options' ),
-					'uploadedFonts'        => Local_Fonts_Uploader_Data::get_fonts(),
-					'isRtl'                => is_rtl(),
+					'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
+					'nonce'         => wp_create_nonce( 'local-fonts-uploader' ),
+					'translate'     => local_fonts_uploader_strings(),
+					'uploadedFonts' => Local_Fonts_Uploader_Data::get_fonts(),
+					'isRtl'         => is_rtl(),
 				]
 			);
 
 			wp_enqueue_media();
 
-			wp_enqueue_style( 'localfu-style' );
-			wp_enqueue_script( 'localfu-admin' );
+			wp_enqueue_style( 'lfontsup-style' );
+			wp_enqueue_script( 'lfontsup-admin' );
 		}
 
 		/**
@@ -140,8 +138,8 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Admin_Menu', false ) ) {
 			$mimes['woff']  = 'application/x-font-woff';
 			$mimes['woff2'] = 'application/x-font-woff2';
 			$mimes['ttf']   = 'application/x-font-ttf';
+			$mimes['otf']   = 'application/x-font-otf';
 			$mimes['eot']   = 'application/vnd.ms-fontobject';
-			$mimes['otf']   = 'font/otf';
 
 			return $mimes;
 		}
@@ -170,7 +168,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Admin_Menu', false ) ) {
 		public function submenu( $menu ) {
 
 			if ( isset( $menu['more'] ) ) {
-				$menu['more']['sub_items']['lfu'] = [
+				$menu['more']['sub_items']['lfontsup'] = [
 					'title' => esc_html__( 'Local Fonts Uploader', 'local-fonts-uploader' ),
 					'icon'  => 'rbi-dash rbi-dash-font-o',
 					'url'   => admin_url( 'admin.php?page=local-fonts-uploader' ),
@@ -181,15 +179,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Admin_Menu', false ) ) {
 		}
 
 		/**
-		 * Renders the "Local Fonts Uploader" menu page in the WordPress admin panel.
-		 *
-		 * This function checks if the `RB_ADMIN_CORE` class is available. If so, it calls the `header_template()` method to render the page header.
-		 * Then, it includes the dashboard template file for the plugin, which contains the HTML structure for the admin page.
-		 *
-		 * @since 1.0.0
-		 */
-		/**
-		 * Renders the "Local Fonts Uploader" menu page in the WordPress admin panel.
+		 * Renders the "Local Fonts Uploader" menu page in the WordPress admin panel supported for RubyTheme themes
 		 *
 		 * This function checks if the `RB_ADMIN_CORE` class is available. If so, it calls the `header_template()` method to render the page header.
 		 * Then, it includes the dashboard template file for the plugin, which contains the HTML structure for the admin page.
@@ -231,10 +221,10 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Admin_Menu', false ) ) {
 			$ext = pathinfo( $filename, PATHINFO_EXTENSION );
 
 			$mime_types = [
-				'ttf'   => 'application/x-font-ttf',
-				'otf'   => 'application/x-font-otf',
 				'woff'  => 'application/x-font-woff',
 				'woff2' => 'application/x-font-woff2',
+				'ttf'   => 'application/x-font-ttf',
+				'otf'   => 'application/x-font-otf',
 				'eot'   => 'application/vnd.ms-fontobject',
 			];
 

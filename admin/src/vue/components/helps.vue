@@ -17,11 +17,11 @@ const documentationTrigger = () => {
 
 </script>
 <template>
-	<div class="lfu-fullwidth">
-		<v-card class="lfu-card" elevation="0">
-			<div class="lfu-tips">
-				<h3 class="lfu-tips-headline"><v-icon>mdi-lightbulb-on-outline</v-icon>{{ translate.tips }}</h3>
-					<div class="lfu-tips-description">{{ translate.assignTips }}</div>
+	<div class="lfontsup-fullwidth">
+		<v-card class="lfontsup-card" elevation="0">
+			<div class="lfontsup-tips">
+				<h3 class="lfontsup-tips-headline"><v-icon>mdi-lightbulb-on-outline</v-icon>{{ translate.tips }}</h3>
+					<div class="lfontsup-tips-description">{{ translate.assignTips }}</div>
 			</div>
 			<div class="doc-helper">
 				<h3>
@@ -29,21 +29,21 @@ const documentationTrigger = () => {
 					{{ translate.fullDocumentation }}
 				</h3>
 				<button
-						class="lfu-black-btn lfu-transition lfu-access-btn lfu-docs-btn"
+						class="lfontsup-black-btn lfontsup-transition lfontsup-access-btn lfontsup-docs-btn"
 						@click="documentationTrigger"
 				>
 					<v-icon>mdi-open-in-new</v-icon>
 					{{ translate.learnMore }}
 				</button>
 			</div>
-			<p class="lfu-settings-title">
+			<p class="lfontsup-settings-title">
 				<v-icon>mdi-wordpress</v-icon>
 				{{ translate.premiumTitle }}
 			</p>
-			<div class="lfu-rec-cards">
-				<div class="lfu-rec-card">
+			<div class="lfontsup-rec-cards">
+				<div class="lfontsup-rec-card">
 					<a
-							class="lfu-rec-image"
+							class="lfontsup-rec-image"
 							href="//1.envato.market/MXYjYo"
 							rel="nofollow"
 							target="_blank"
@@ -55,11 +55,11 @@ const documentationTrigger = () => {
 								width="590"
 						/>
 					</a>
-					<div class="lfu-rec-content">
+					<div class="lfontsup-rec-content">
 						<h2>{{ translate.foxizThemeTitle }}</h2>
-						<p class="lfu-rec-tagline">{{ translate.foxizTagline }}</p>
+						<p class="lfontsup-rec-tagline">{{ translate.foxizTagline }}</p>
 						<a
-								class="lfu-black-btn lfu-transition lfu-access-btn"
+								class="lfontsup-black-btn lfontsup-transition lfontsup-access-btn"
 								href="//1.envato.market/MXYjYo"
 								rel="nofollow"
 								target="_blank"
@@ -69,9 +69,9 @@ const documentationTrigger = () => {
 						</a>
 					</div>
 				</div>
-				<div class="lfu-rec-card">
+				<div class="lfontsup-rec-card">
 					<a
-							class="lfu-rec-image"
+							class="lfontsup-rec-image"
 							href="//1.envato.market/Z25Rz"
 							rel="nofollow"
 							target="_blank"
@@ -83,11 +83,11 @@ const documentationTrigger = () => {
 								width="590"
 						/>
 					</a>
-					<div class="lfu-rec-content">
+					<div class="lfontsup-rec-content">
 						<h2>{{ translate.pixwellThemeTitle }}</h2>
-						<p class="lfu-rec-tagline">{{ translate.pixwellTagline }}</p>
+						<p class="lfontsup-rec-tagline">{{ translate.pixwellTagline }}</p>
 						<a
-								class="lfu-black-btn lfu-transition lfu-access-btn"
+								class="lfontsup-black-btn lfontsup-transition lfontsup-access-btn"
 								href="//1.envato.market/Z25Rz"
 								rel="nofollow"
 								target="_blank"

@@ -12,7 +12,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Client', false ) ) {
 	class Local_Fonts_Uploader_Client {
 
 		private static $instance;
-		private $cache_key = '_easy_font_uploader_css'; // Cache key for storing generated CSS
+		private $cache_key = 'local_fonts_uploader_css'; // Cache key for storing generated CSS
 
 		static $font_formats = [
 			'woff2' => 'woff2',
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Client', false ) ) {
 
 			// Retrieve variants that have an 'assign_to' value
 			return $wpdb->get_results(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				"SELECT font_name, variant, file_url, assign_to FROM {$wpdb->prefix}localfu_variants WHERE assign_to IS NOT NULL AND assign_to != ''",
+				"SELECT font_name, variant, file_url, assign_to FROM {$wpdb->prefix}lfontsup_variants WHERE assign_to IS NOT NULL AND assign_to != ''",
 				ARRAY_A
 			);
 		}
@@ -156,7 +156,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Client', false ) ) {
 		public function enqueue_fonts() {
 
 			// Apply filter to allow modification of the generated font CSS.
-			$css = apply_filters( 'easy_fonts_uploader_css', $this->render_all_fonts_css() );
+			$css = apply_filters( 'local_fonts_uploader_css', $this->render_all_fonts_css() );
 
 			// Exit if no CSS is generated.
 			if ( empty( $css ) ) {

@@ -10,8 +10,8 @@ defined( 'ABSPATH' ) || exit;
  *
  * @return array An associative array of localized strings.
  */
-if ( ! function_exists( 'local_font_uploader_strings' ) ) {
-	function local_font_uploader_strings() {
+if ( ! function_exists( 'local_fonts_uploader_strings' ) ) {
+	function local_fonts_uploader_strings() {
 		return [
 			'appTitle'                    => esc_html__( 'Local Fonts Uploader', 'local-fonts-uploader' ),
 			'appDescription'              => esc_html__( 'Easily upload premium fonts, host any font locally on your site. Avoid external requests to protect data, boost speed, and stay GDPR-compliant for better security, privacy, and performance.', 'local-fonts-uploader' ),
@@ -51,6 +51,7 @@ if ( ! function_exists( 'local_font_uploader_strings' ) ) {
 			'goToOverview'                => esc_html__( 'Go to Overview', 'local-fonts-uploader' ),
 			'uploadVariantDesc'           => esc_html__( 'Select your own variant files to use.', 'local-fonts-uploader' ),
 			'variantPlaceHolder'          => esc_html__( 'Choose a variant...', 'local-fonts-uploader' ),
+			'replaceFile'                 => esc_html__( 'Replace File', 'local-fonts-uploader' ),
 			'uploadFile'                  => esc_html__( 'Upload File', 'local-fonts-uploader' ),
 			'fontTypeAlertTitle'          => esc_html__( 'Invalid File Type.', 'local-fonts-uploader' ),
 			'fontTypeAlertDesc'           => esc_html__( 'Only .ttf, .otf, .woff, .woff2, .eot files are allowed.', 'local-fonts-uploader' ),

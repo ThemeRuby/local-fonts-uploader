@@ -8,7 +8,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 		/**
 		 * Inserts a new font into the database.
 		 *
-		 * This function inserts a font name into the `localfu_fonts` table while ensuring
+		 * This function inserts a font name into the `lfontsup_fonts` table while ensuring
 		 * it is a sanitized text string. It prevents SQL injection and ignores duplicate entries.
 		 *
 		 * @param string $name The name of the font to insert.
@@ -31,7 +31,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$inserted = $wpdb->insert(
-				$wpdb->prefix . 'localfu_fonts',
+				$wpdb->prefix . 'lfontsup_fonts',
 				[
 					'name'      => $name,
 					'amount'    => absint( $amount ),
@@ -57,11 +57,11 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 			// Ensure font name is sanitized and valid
 			$font_name = sanitize_text_field( $font_name );
 
-			$wpdb->delete( $wpdb->prefix . 'localfu_fonts', [ 'name' => $font_name ] ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->delete( $wpdb->prefix . 'lfontsup_fonts', [ 'name' => $font_name ] ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
-			// Get all file IDs related to the font from localfu_variants
+			// Get all file IDs related to the font from lfontsup_variants
 			$file_ids = $wpdb->get_col( $wpdb->prepare(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				"SELECT file_id FROM {$wpdb->prefix}localfu_variants WHERE font_name = %s",
+				"SELECT file_id FROM {$wpdb->prefix}lfontsup_variants WHERE font_name = %s",
 				$font_name
 			) );
 
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 				}
 			}
 
-			$wpdb->delete( $wpdb->prefix . 'localfu_variants', [ 'font_name' => $font_name ] );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->delete( $wpdb->prefix . 'lfontsup_variants', [ 'font_name' => $font_name ] );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 			// clear css caching
 			self::clear_caching();
@@ -83,7 +83,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 		/**
 		 * Retrieve all fonts along with their variants from the database.
 		 *
-		 * This function queries the `localfu_fonts` table and returns all stored fonts
+		 * This function queries the `lfontsup_fonts` table and returns all stored fonts
 		 * with their associated variant data in an associative array format.
 		 *
 		 * @return array List of fonts with variants, each as an associative array.
@@ -94,11 +94,11 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			global $wpdb;
 
-			return $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}localfu_fonts", ARRAY_A );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			return $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}lfontsup_fonts", ARRAY_A );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		}
 
 		/**
-		 * Retrieves all font variants from the 'localfu_variants' table.
+		 * Retrieves all font variants from the 'lfontsup_variants' table.
 		 *
 		 * @return array List of all font variants as associative arrays.
 		 * @global wpdb $wpdb WordPress database abstraction object.
@@ -107,7 +107,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 			global $wpdb;
 
 			// Fetch all variants from the database table
-			return $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}localfu_variants", ARRAY_A );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			return $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}lfontsup_variants", ARRAY_A );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		}
 
 		/**
@@ -131,7 +131,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 			// Fetch all variants for the given font_name, ordered by length and alphabetically
 			return $wpdb->get_results(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->prepare(
-					"SELECT * FROM {$wpdb->prefix}localfu_variants 
+					"SELECT * FROM {$wpdb->prefix}lfontsup_variants 
 			         WHERE font_name = %s 
 			         ORDER BY LENGTH(variant), variant ASC",
 					$font_name
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 		 *
 		 * This function sanitizes the font name before querying the database
 		 * to prevent SQL injection and ensure data integrity. It then checks
-		 * if the font is already stored in the `localfu_fonts` table.
+		 * if the font is already stored in the `lfontsup_fonts` table.
 		 *
 		 * @param string $font_name The name of the font to check.
 		 *
@@ -160,7 +160,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 			// Query the database to check if the font already exists
 			$exists = $wpdb->get_var(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->prepare(
-					"SELECT COUNT(*) FROM {$wpdb->prefix}localfu_fonts WHERE name = %s",
+					"SELECT COUNT(*) FROM {$wpdb->prefix}lfontsup_fonts WHERE name = %s",
 					$font_name
 				)
 			);
@@ -191,7 +191,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			$exists = $wpdb->get_var(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->prepare(
-					"SELECT COUNT(*) FROM {$wpdb->prefix}localfu_variants WHERE font_name = %s AND variant = %s",
+					"SELECT COUNT(*) FROM {$wpdb->prefix}lfontsup_variants WHERE font_name = %s AND variant = %s",
 					$font_name,
 					$variant
 				)
@@ -220,7 +220,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			// Insert the new variant
 			$inserted = $wpdb->insert(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				$wpdb->prefix . 'localfu_variants',
+				$wpdb->prefix . 'lfontsup_variants',
 				[
 					'variant'   => sanitize_text_field( $data['variant'] ),
 					'font_name' => sanitize_text_field( $data['font_name'] ),
@@ -254,7 +254,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			// Get the file_id associated with this variant
 			$variant = $wpdb->get_row( $wpdb->prepare(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				"SELECT font_name, file_id FROM {$wpdb->prefix}localfu_variants WHERE id = %d",
+				"SELECT font_name, file_id FROM {$wpdb->prefix}lfontsup_variants WHERE id = %d",
 				$variant_id
 			), ARRAY_A );
 
@@ -269,7 +269,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 			if ( ! empty( $file_id ) ) {
 				wp_delete_attachment( $file_id, true );
 			}
-			$result = $wpdb->delete( $wpdb->prefix . 'localfu_variants', [ 'id' => $variant_id ] );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$result = $wpdb->delete( $wpdb->prefix . 'lfontsup_variants', [ 'id' => $variant_id ] );  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
 			// clear css caching
 			self::clear_caching();
@@ -281,7 +281,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 		 * Synchronizes the variant count for a given font.
 		 *
 		 * This function counts the number of variants associated with the specified font name
-		 * in the `localfu_variants` table and updates the `amount` field in the `localfu_fonts` table.
+		 * in the `lfontsup_variants` table and updates the `amount` field in the `lfontsup_fonts` table.
 		 *
 		 * @param string $font_name The name of the font whose variant count needs to be updated.
 		 *
@@ -301,14 +301,14 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			// Get the total number of rows with the given font_name
 			$total = (int) $wpdb->get_var( $wpdb->prepare(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				"SELECT COUNT(*) FROM {$wpdb->prefix}localfu_variants WHERE font_name = %s",
+				"SELECT COUNT(*) FROM {$wpdb->prefix}lfontsup_variants WHERE font_name = %s",
 				$font_name
 			) );
 
-			// If there are variants associated with the font, update the count in localfu_fonts
+			// If there are variants associated with the font, update the count in lfontsup_fonts
 			if ( ! empty( $total ) ) {
 				$wpdb->update(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-					$wpdb->prefix . 'localfu_fonts',
+					$wpdb->prefix . 'lfontsup_fonts',
 					[ 'amount' => $total ],
 					[ 'name' => $font_name ],
 					[ '%d' ],
@@ -339,7 +339,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			// Check if variant ID exists
 			$variant_exists = $wpdb->get_var( $wpdb->prepare(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				"SELECT COUNT(*) FROM {$wpdb->prefix}localfu_variants WHERE id = %d",
+				"SELECT COUNT(*) FROM {$wpdb->prefix}lfontsup_variants WHERE id = %d",
 				$variant_id
 			) );
 
@@ -349,7 +349,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 
 			// Update assign_to field
 			$updated = $wpdb->update(  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-				$wpdb->prefix . 'localfu_variants',
+				$wpdb->prefix . 'lfontsup_variants',
 				[ 'assign_to' => $assign_to ],
 				[ 'id' => $variant_id ],
 				[ '%s' ],
@@ -365,11 +365,11 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Data' ) ) {
 		/**
 		 * Clears the cached Easy Font Uploader CSS option.
 		 *
-		 * This function deletes the `_easy_font_uploader_css` option from the database
+		 * This function deletes the `local_fonts_uploader_css` option from the database
 		 * to force a refresh of the stored font styles.
 		 */
 		static function clear_caching() {
-			delete_option( '_easy_font_uploader_css' );
+			delete_option( 'local_fonts_uploader_css' );
 		}
 	}
 }

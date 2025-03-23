@@ -6,10 +6,10 @@ import fontVariants from './components/variants.vue';
 import backupRestore from './components/backup.vue';
 import helps from './components/helps.vue';
 
-const translate = localfuAdminConfig?.translate || {};
-const tab = ref(Number(localStorage.getItem('localfuAdminTab')) || 0);
-const uploadedFonts = ref(localfuAdminConfig?.uploadedFonts || {});
-const selectedFont = ref(Object(getStorage('localfuSavedFont')) || {});
+const translate = lfontsupAdminConfig?.translate || {};
+const tab = ref(Number(localStorage.getItem('lfontsupAdminTab')) || 0);
+const uploadedFonts = ref(lfontsupAdminConfig?.uploadedFonts || {});
+const selectedFont = ref(Object(getStorage('lfontsupSavedFont')) || {});
 
 provide("uploadedFonts", uploadedFonts);
 provide("translate", translate);
@@ -17,11 +17,11 @@ provide("selectedFont", selectedFont);
 provide("tab", tab);
 
 watch(tab, (newValue) => {
-	setStorage('localfuAdminTab', newValue);
+	setStorage('lfontsupAdminTab', newValue);
 });
 
 onMounted(() => {
-	const savedTab = getStorage('localfuAdminTab');
+	const savedTab = getStorage('lfontsupAdminTab');
 	if (savedTab !== null) {
 		tab.value = Number(savedTab);
 	}
@@ -45,24 +45,24 @@ const  documentationTrigger = () => {
 
 </script>
 <template>
-	<v-app class="lfu-app">
-		<v-container class="lfu-container">
+	<v-app class="lfontsup-app">
+		<v-container class="lfontsup-container">
 			<v-row class="ma-0 pa-0">
 				<v-col class="ma-0 pa-0" cols="12">
-					<v-card id="lfu-title-card" class="lfu-card d-flex justify-space-between" elevation="0">
-						<div class="lfu-introduce-left">
+					<v-card id="lfontsup-title-card" class="lfontsup-card d-flex justify-space-between" elevation="0">
+						<div class="lfontsup-introduce-left">
 							<div class="d-flex">
-								<h2 class="lfu-admin-title">{{ translate.appTitle }}</h2>
+								<h2 class="lfontsup-admin-title">{{ translate.appTitle }}</h2>
 								<button
-										class="lfu-white-btn lfu-transition lfu-docs-btn"
+										class="lfontsup-white-btn lfontsup-transition lfontsup-docs-btn"
 										@click="documentationTrigger">
 									<v-icon>mdi-file-document</v-icon>
 									{{ translate.documentation }}
 								</button>
 							</div>
-							<p class="lfu-tagline">{{ translate.appDescription }}</p>
+							<p class="lfontsup-tagline">{{ translate.appDescription }}</p>
 						</div>
-						<div class="lfu-introduce-right">
+						<div class="lfontsup-introduce-right">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 502 502">
 								<defs>
 									<linearGradient id="ifont-path-a" x1="151.567" x2="151.567" y1="280.837" y2="-1.561" gradientUnits="userSpaceOnUse">
@@ -85,8 +85,8 @@ const  documentationTrigger = () => {
 					</v-card>
 				</v-col>
 			</v-row>
-			<v-tabs v-model="tab" class="lfu-v-tabs">
-				<v-card id="lfu-tab-title-card">
+			<v-tabs v-model="tab" class="lfontsup-v-tabs">
+				<v-card id="lfontsup-tab-title-card">
 					<v-tab
 							v-for="(tabItem, index) in [
 				        { label: translate.fontsOverview, icon: 'mdi-format-list-bulleted' },
@@ -96,7 +96,7 @@ const  documentationTrigger = () => {
 				      ]"
 							:key="index"
 							:value="index"
-							class="lfu-vtab-title"
+							class="lfontsup-vtab-title"
 					>
 						<v-icon>{{ tabItem.icon }}</v-icon>
 						{{ tabItem.label }}

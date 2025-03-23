@@ -1,4 +1,4 @@
-=== Local Fonts Uploader – Upload & Host Font Locally for GDPR Compliance ===
+=== Local Fonts Uploader ===
 Contributors: themeruby
 Tags: custom fonts, google fonts, local fonts, upload fonts, GDPR compliant
 Requires at least: 6.3
@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Easily upload premium fonts and host them locally. Avoid external requests to enhance security, privacy, speed, and GDPR compliance.
+Easily upload and host fonts locally. Avoid external requests to enhance security, privacy, speed, and GDPR compliance.
 
 == Description ==
 

@@ -25,7 +25,7 @@ const addVariant = ref({
 
 const snackbar = reactive({
 	show: false,
-	className: 'lfu-snackbar',
+	className: 'lfontsup-snackbar',
 	message: "",
 	icon: "mdi-message-reply-outline",
 });
@@ -43,7 +43,7 @@ const alertDialog = reactive({
 
 const confirmationDialog = reactive({
 	show: false,
-	className: 'lfu-popup-box',
+	className: 'lfontsup-popup-box',
 	icon: 'mdi-delete-empty-outline',
 	title: '',
 	message: '',
@@ -293,7 +293,7 @@ onMounted(() => {
 
 	// Validate the selected font
 	if (!isValidSelectedFont()) {
-		deleteStorage('localfuSavedFont'); // Remove invalid entry
+		deleteStorage('lfontsupSavedFont'); // Remove invalid entry
 		selectedFont.value = {}; // Reset selection
 	}
 
@@ -369,11 +369,11 @@ const fetchFontVariants = async (fontName) => {
 	try {
 		const formData = new FormData();
 
-		formData.append("action", "localfuGetVariants");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupGetVariants");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 		formData.append("data", JSON.stringify({font_name: fontName}));
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -385,7 +385,7 @@ const fetchFontVariants = async (fontName) => {
 			showAlertDialog({
 				title: translate.errorTitle,
 				message: results.data,
-				className: 'lfu-red',
+				className: 'lfontsup-red',
 				icon: 'mdi-information-outline',
 			})
 		}
@@ -442,7 +442,7 @@ const uploadFontFrameTrigger = (event) => {
 				showAlertDialog({
 					title: translate.fontTypeAlertTitle,
 					message: translate.fontTypeAlertDesc,
-					className: 'lfu-red',
+					className: 'lfontsup-red',
 					icon: 'mdi-file-cancel-outline',
 				});
 			}
@@ -466,7 +466,7 @@ const validateVariantData = () => {
 		showAlertDialog({
 			title: translate.missingFontTitle,
 			message: translate.missingFontDesc,
-			className: 'lfu-red',
+			className: 'lfontsup-red',
 			icon: 'mdi-card-bulleted-off-outline',
 		});
 		return false;
@@ -476,7 +476,7 @@ const validateVariantData = () => {
 		showAlertDialog({
 			title: translate.missingVariantTitle,
 			message: translate.missingVariantDesc,
-			className: 'lfu-red',
+			className: 'lfontsup-red',
 			icon: 'mdi-cards-outline',
 		});
 		return false;
@@ -486,7 +486,7 @@ const validateVariantData = () => {
 		showAlertDialog({
 			title: translate.missingFileTitle,
 			message: translate.missingFileDesc,
-			className: 'lfu-red',
+			className: 'lfontsup-red',
 			icon: 'mdi-file-alert-outline',
 		});
 		return false;
@@ -508,11 +508,11 @@ const addFontVariant = async () => {
 	try {
 		isRequestPending.value = true;
 		const formData = new FormData();
-		formData.append("action", "localfuAddVariant");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupAddVariant");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 		formData.append("data", JSON.stringify(addVariant.value));
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -524,14 +524,14 @@ const addFontVariant = async () => {
 
 			showSnackbar({
 				message: translate.addVariantSuccessMessage.replace('%s', addVariant.value.variant),
-				className: 'lfu-snackbar',
+				className: 'lfontsup-snackbar',
 			});
 
 		} else {
 			showAlertDialog({
 				title: translate.errorTitle,
 				message: results.data,
-				className: 'lfu-red',
+				className: 'lfontsup-red',
 				icon: 'mdi-information-outline',
 			})
 		}
@@ -557,11 +557,11 @@ const deleteFontVariant = async (variantID, variantName) => {
 	try {
 		isRequestPending.value = true;
 		const formData = new FormData();
-		formData.append("action", "localfuDeleteVariant");
-		formData.append("_nonce", localfuAdminConfig.nonce);
+		formData.append("action", "lfontsupDeleteVariant");
+		formData.append("_nonce", lfontsupAdminConfig.nonce);
 		formData.append("data", JSON.stringify({'variant_id': variantID}));
 
-		const response = await fetch(localfuAdminConfig.ajaxUrl, {
+		const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 			method: "POST",
 			body: formData,
 		});
@@ -572,13 +572,13 @@ const deleteFontVariant = async (variantID, variantName) => {
 
 			showSnackbar({
 				message: translate.deleteVariantSuccessMessage.replace('%s', variantName),
-				className: 'lfu-snackbar',
+				className: 'lfontsup-snackbar',
 			});
 		} else {
 			showAlertDialog({
 				title: translate.errorTitle,
 				message: results.data,
-				className: 'lfu-red',
+				className: 'lfontsup-red',
 				icon: 'mdi-information-outline',
 			})
 		}
@@ -629,20 +629,20 @@ const assignVariantTrigger = (variantID) => {
 				if (!variantID) {
 					showSnackbar({
 						message: translate.assignedEmptyMessage,
-						className: 'lfu-red'
+						className: 'lfontsup-red'
 					});
 					return;
 				}
 
 				const formData = new FormData();
-				formData.append("action", "localfuVariantAssign");
-				formData.append("_nonce", localfuAdminConfig.nonce);
+				formData.append("action", "lfontsupVariantAssign");
+				formData.append("_nonce", lfontsupAdminConfig.nonce);
 				formData.append("data", JSON.stringify({
 					'variant_id': variantID,
 					'assign_to': assignTo
 				}));
 
-				const response = await fetch(localfuAdminConfig.ajaxUrl, {
+				const response = await fetch(lfontsupAdminConfig.ajaxUrl, {
 					method: "POST",
 					body: formData,
 				});
@@ -653,7 +653,7 @@ const assignVariantTrigger = (variantID) => {
 
 					showSnackbar({
 						message: assignTo ? translate.assignVariantSuccessMessage : translate.clearVariantSuccessMessage,
-						className: 'lfu-snackbar',
+						className: 'lfontsup-snackbar',
 					});
 
 					assignVariantDialog.show = false;
@@ -661,7 +661,7 @@ const assignVariantTrigger = (variantID) => {
 					showAlertDialog({
 						title: translate.errorTitle,
 						message: results.data,
-						className: 'lfu-red',
+						className: 'lfontsup-red',
 						icon: 'mdi-information-outline',
 					})
 				}
@@ -738,7 +738,7 @@ const deleteVariantTrigger = (variantID, variantName) => {
 	</v-snackbar>
 	
 	<!-- Alert Dialog -->
-	<v-dialog v-model="alertDialog.show" :class="alertDialog.className" class="lfu-popup-box" persistent>
+	<v-dialog v-model="alertDialog.show" :class="alertDialog.className" class="lfontsup-popup-box" persistent>
 		<v-card>
 			<v-card-title>
 				<v-icon>{{ alertDialog.icon }}</v-icon>
@@ -746,13 +746,13 @@ const deleteVariantTrigger = (variantID, variantName) => {
 			</v-card-title>
 			<v-card-text>{{ alertDialog.message }}</v-card-text>
 			<v-card-actions>
-				<v-btn class="lfu-ok-btn" @click="alertDialog.onOkClick">{{ translate.ok }}</v-btn>
+				<v-btn class="lfontsup-ok-btn" @click="alertDialog.onOkClick">{{ translate.ok }}</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-dialog>
 	
 	<!-- Confirmation Dialog -->
-	<v-dialog v-model="confirmationDialog.show" :class="confirmationDialog.className" class="lfu-popup-box" persistent>
+	<v-dialog v-model="confirmationDialog.show" :class="confirmationDialog.className" class="lfontsup-popup-box" persistent>
 		<v-card>
 			<v-card-title>
 				<v-icon>{{ confirmationDialog.icon }}</v-icon>
@@ -761,24 +761,24 @@ const deleteVariantTrigger = (variantID, variantName) => {
 			<v-card-text>{{ confirmationDialog.message }}</v-card-text>
 			<v-card-actions>
 				<v-spacer></v-spacer>
-				<v-btn class="lfu-cancel-btn" @click="confirmationDialog.onConfirm">{{ translate.delete }}</v-btn>
+				<v-btn class="lfontsup-cancel-btn" @click="confirmationDialog.onConfirm">{{ translate.delete }}</v-btn>
 				<v-btn @click="confirmationDialog.onCancel">{{ translate.cancel }}</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-dialog>
 	
 	<!-- Assign HTML Class Dialog -->
-	<v-dialog v-model="assignVariantDialog.show" :class="assignVariantDialog.className" class="lfu-popup-box is-assign-variant" persistent>
+	<v-dialog v-model="assignVariantDialog.show" :class="assignVariantDialog.className" class="lfontsup-popup-box is-assign-variant" persistent>
 		<v-card>
 			<v-card-title>
 				<v-icon>mdi mdi-language-css3</v-icon>
 				{{ translate.assignSelectorsHeadline }}
 			</v-card-title>
-			<div class="lfu-assign-help-text">{{ translate.assignVariantHelp }}</div>
-			<textarea v-model="assignedClassNames" :placeholder="translate.assignedPlaceHolder" class="lfu-assign-input"></textarea>
+			<div class="lfontsup-assign-help-text">{{ translate.assignVariantHelp }}</div>
+			<textarea v-model="assignedClassNames" :placeholder="translate.assignedPlaceHolder" class="lfontsup-assign-input"></textarea>
 			<v-spacer></v-spacer>
 			<v-card-actions>
-				<v-btn class="lfu-access-btn" @click="assignVariantDialog.onConfirm">{{ translate.saveChanges }}</v-btn>
+				<v-btn class="lfontsup-access-btn" @click="assignVariantDialog.onConfirm">{{ translate.saveChanges }}</v-btn>
 				<v-btn @click="assignVariantDialog.onCancel">{{ translate.cancel }}</v-btn>
 			</v-card-actions>
 		</v-card>
@@ -786,17 +786,17 @@ const deleteVariantTrigger = (variantID, variantName) => {
 	
 	
 	<!-- selectedFont not found --->
-	<div v-if="!selectedFont.name" class="localfu-setting-container">
+	<div v-if="!selectedFont.name" class="lfontsup-setting-container">
 		<v-row class="ma-0 pa-0">
 			<v-col class="ma-0 pa-0" cols="12">
-				<v-card class="lfu-card lfu-card-center" elevation="0">
-					<h2 class="lfu-card-title-center">
+				<v-card class="lfontsup-card lfontsup-card-center" elevation="0">
+					<h2 class="lfontsup-card-title-center">
 						<v-icon>mdi mdi-heart-broken-outline</v-icon>
 						{{ translate.notFoundFontTitle }}
 					</h2>
-					<p class="lfu-tagline">{{ translate.notFoundFontDesc }}</p>
-					<div class="lfu-create-form-wrap">
-						<button class="lfu-btn lfu-transition lfu-big-btn" @click="openOverviewTabTrigger">
+					<p class="lfontsup-tagline">{{ translate.notFoundFontDesc }}</p>
+					<div class="lfontsup-create-form-wrap">
+						<button class="lfontsup-btn lfontsup-transition lfontsup-big-btn" @click="openOverviewTabTrigger">
 							<v-icon>mdi mdi-arrow-left-top</v-icon>
 							{{ translate.goToOverview }}
 						</button>
@@ -806,26 +806,26 @@ const deleteVariantTrigger = (variantID, variantName) => {
 		</v-row>
 	</div>
 	
-	<div v-else class="localfu-setting-container">
+	<div v-else class="lfontsup-setting-container">
 		<v-row v-if="fontVariantOptions && fontVariantOptions.length > 0" class="ma-0 pa-0">
 			<v-col class="ma-0 pa-0" cols="12">
-				<v-card class="lfu-card lfu-card-center" elevation="0">
-					<h2 class="lfu-card-title-center">
+				<v-card class="lfontsup-card lfontsup-card-center" elevation="0">
+					<h2 class="lfontsup-card-title-center">
 						<v-icon color="icon-variants">mdi mdi-cards</v-icon>
 						{{ translate.uploadVariantHeading.replace('%s', selectedFont.name) }}
 					</h2>
-					<p class="lfu-tagline">{{ translate.uploadVariantDesc }}</p>
-					<div class="lfu-variant-form-wrap">
+					<p class="lfontsup-tagline">{{ translate.uploadVariantDesc }}</p>
+					<div class="lfontsup-variant-form-wrap">
 						<div class="flu-file-upload">
 							<div class="flu-file-holder">
 								<i v-if="!addVariant.file_id" class="flu-file-upload-icon mdi mdi-file-hidden"></i>
 								<i v-else class="mdi mdi-file-check flu-file-upload-icon"></i>
 								<div v-if="addVariant.file_url" class="flu-file-url">{{ addVariant.file_url }}</div>
 							</div>
-							<div class="lfu-description">{{ translate.fontFileSupported }}</div>
-							<button class="lfu-btn lfu-transition lfu-white-btn lfu-file-btn" @click="uploadFontFrameTrigger($event)">
-								<v-icon>mdi mdi-upload</v-icon>
-								{{ translate.uploadFile }}
+							<div class="lfontsup-description">{{ translate.fontFileSupported }}</div>
+							<button class="lfontsup-btn lfontsup-transition lfontsup-white-btn lfontsup-file-btn" @click="uploadFontFrameTrigger($event)">
+								<v-icon :class="addVariant.file_id ? 'mdi mdi-file-replace' : 'mdi mdi-upload'"></v-icon>
+								{{ addVariant.file_id ? translate.replaceFile : translate.uploadFile }}
 							</button>
 						</div>
 						<v-select
@@ -833,18 +833,18 @@ const deleteVariantTrigger = (variantID, variantName) => {
 								:items="fontVariantOptions"
 								:label="translate.selectVariant"
 								:placeholder="translate.variantPlaceHolder"
-								class="lfu-select lfu-select-variant"
+								class="lfontsup-select lfontsup-select-variant"
 								density="comfortable"
 								item-title="label"
 								item-value="id"
 								required
 								variant="outlined"
 						/>
-						<div class="lfu-variant-actions">
-							<button :disabled="isRequestPending" class="lfu-btn lfu-transition lfu-white-btn lfu-cancel-btn" @click="cancelVariantTrigger($event)">
+						<div class="lfontsup-variant-actions">
+							<button :disabled="isRequestPending" class="lfontsup-btn lfontsup-transition lfontsup-white-btn lfontsup-cancel-btn" @click="cancelVariantTrigger($event)">
 								{{ translate.cancel }}
 							</button>
-							<button :disabled="isRequestPending" class="lfu-btn lfu-transition lfu-black-btn lfu-access-btn" @click="submitVariantTrigger($event)">
+							<button :disabled="isRequestPending" class="lfontsup-btn lfontsup-transition lfontsup-black-btn lfontsup-access-btn" @click="submitVariantTrigger($event)">
 								{{ translate.saveChanges }}
 							</button>
 						</div>
@@ -855,51 +855,51 @@ const deleteVariantTrigger = (variantID, variantName) => {
 		</v-row>
 		<v-row v-else class="ma-0 pa-0">
 			<v-col class="ma-0 pa-0" cols="12">
-				<v-card class="lfu-card lfu-card-center lfu-all-variants-info" elevation="0">
-					<h2 class="lfu-card-title-center">
+				<v-card class="lfontsup-card lfontsup-card-center lfontsup-all-variants-info" elevation="0">
+					<h2 class="lfontsup-card-title-center">
 						<v-icon color="icon-variants">mdi mdi-creation</v-icon>
 						{{ translate.allVariantsAvailable }}
 					</h2>
-					<p class="lfu-tagline">{{ translate.allVariantsAvailableDecs }}</p>
+					<p class="lfontsup-tagline">{{ translate.allVariantsAvailableDecs }}</p>
 				</v-card>
 			</v-col>
 		</v-row>
 		
 		<!-- Variant Fonts List -->
-		<template v-if=" variantsData && variantsData.length > 0" class="localfu-card">
-			<v-card class="lfu-card" elevation="0">
-				<div class="lfu-form-list-title">
-					<div class="lfu-icon-title">
-						<div class="lfu-icon-title">
+		<template v-if=" variantsData && variantsData.length > 0" class="lfontsup-card">
+			<v-card class="lfontsup-card" elevation="0">
+				<div class="lfontsup-form-list-title">
+					<div class="lfontsup-icon-title">
+						<div class="lfontsup-icon-title">
 							<v-icon>mdi-format-list-bulleted</v-icon>
 							{{ selectedFont.name }} - {{ translate.variantsListing }}
 						</div>
 					</div>
 				</div>
-				<div class="lfu-listing">
+				<div class="lfontsup-listing">
 					<template v-for="(variant, index) in sortedVariantsData" :key="index">
-						<div class="localfu-list">
-							<div class="localfu-name-container">
-								<h2 class="localfu-name">
+						<div class="lfontsup-list">
+							<div class="lfontsup-name-container">
+								<h2 class="lfontsup-name">
 									<v-icon>mdi-format-font</v-icon>
 									{{ formattedVariant(variant.variant) }}
 								</h2>
-								<div class="localfu-file">
+								<div class="lfontsup-file">
 									<v-icon>mdi-folder-check-outline</v-icon>
 									{{ variant.file_url }}
 								</div>
-								<div v-if="variant.assign_to" class="localfu-assign">
-									<v-chip-group class="lfu-assigned-preview">
+								<div v-if="variant.assign_to" class="lfontsup-assign">
+									<v-chip-group class="lfontsup-assigned-preview">
 										<v-chip v-for="className in variant.assign_to.split(',')" :key="className" disabled>
 											{{ className }}
 										</v-chip>
 									</v-chip-group>
 								</div>
 							</div>
-							<div class="localfu-uploaded-font-btn-container">
+							<div class="lfontsup-uploaded-font-btn-container">
 								<button
 										:disabled="isRequestPending"
-										class="lfu-btn lfu-transition lfu-black-btn lfu-access-btn"
+										class="lfontsup-btn lfontsup-transition lfontsup-black-btn lfontsup-access-btn"
 										@click="assignVariantTrigger(variant.id)"
 								>
 									<v-icon>mdi-code-brackets</v-icon>
@@ -907,7 +907,7 @@ const deleteVariantTrigger = (variantID, variantName) => {
 								</button>
 								<button
 										:disabled="isRequestPending"
-										class="lfu-btn-red lfu-btn lfu-transition lfu-white-btn lfu-cancel-btn"
+										class="lfontsup-btn-red lfontsup-btn lfontsup-transition lfontsup-white-btn lfontsup-cancel-btn"
 										@click="deleteVariantTrigger(variant.id, variant.variant)"
 								>
 									<v-icon>mdi-delete-outline</v-icon>

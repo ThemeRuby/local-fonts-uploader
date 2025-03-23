@@ -29,31 +29,31 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Ajax_Handler', false ) ) {
 			self::$instance = $this;
 
 			// AJAX: Retrieve all uploaded fonts.
-			add_action( 'wp_ajax_localfuGetAllFonts', [ $this, 'ajax_uploaded_fonts' ] );
+			add_action( 'wp_ajax_lfontsupGetAllFonts', [ $this, 'ajax_uploaded_fonts' ] );
 
 			// AJAX: Create a new font entry.
-			add_action( 'wp_ajax_localfuCreateFont', [ $this, 'ajax_create_font' ] );
+			add_action( 'wp_ajax_lfontsupCreateFont', [ $this, 'ajax_create_font' ] );
 
 			// AJAX: Delete an existing font.
-			add_action( 'wp_ajax_localfuRemoveFont', [ $this, 'ajax_remove_font' ] );
+			add_action( 'wp_ajax_lfontsupRemoveFont', [ $this, 'ajax_remove_font' ] );
 
 			// AJAX: Retrieve all variants of a specific font.
-			add_action( 'wp_ajax_localfuGetVariants', [ $this, 'ajax_get_variants' ] );
+			add_action( 'wp_ajax_lfontsupGetVariants', [ $this, 'ajax_get_variants' ] );
 
 			// AJAX: Add a new font variant.
-			add_action( 'wp_ajax_localfuAddVariant', [ $this, 'ajax_create_variant' ] );
+			add_action( 'wp_ajax_lfontsupAddVariant', [ $this, 'ajax_create_variant' ] );
 
 			// AJAX: Remove a specific font variant.
-			add_action( 'wp_ajax_localfuDeleteVariant', [ $this, 'ajax_remove_variant' ] );
+			add_action( 'wp_ajax_lfontsupDeleteVariant', [ $this, 'ajax_remove_variant' ] );
 
 			// AJAX: Assign a font variant to a specific HTML class.
-			add_action( 'wp_ajax_localfuVariantAssign', [ $this, 'ajax_assign_variant' ] );
+			add_action( 'wp_ajax_lfontsupVariantAssign', [ $this, 'ajax_assign_variant' ] );
 
 			// AJAX: Fetch a backup of all stored font data.
-			add_action( 'wp_ajax_lfuFetchBackup', [ $this, 'ajax_get_backup' ] );
+			add_action( 'wp_ajax_lfontsupFetchBackup', [ $this, 'ajax_get_backup' ] );
 
 			// AJAX: Restore font data from a backup.
-			add_action( 'wp_ajax_lfuRestoreData', [ $this, 'ajax_restore_data' ] );
+			add_action( 'wp_ajax_lfontsupRestoreData', [ $this, 'ajax_restore_data' ] );
 		}
 
 
@@ -226,7 +226,7 @@ if ( ! class_exists( 'Local_Fonts_Uploader_Ajax_Handler', false ) ) {
 		 *
 		 * This function verifies the nonce for security, checks user permissions,
 		 * validates the received data, and attempts to remove the specified font
-		 * from the `localfu_fonts` table.
+		 * from the `lfontsup_fonts` table.
 		 *
 		 * @return void Outputs a JSON response indicating success or failure.
 		 */
